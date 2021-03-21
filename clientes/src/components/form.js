@@ -127,7 +127,7 @@ const APIForm  = (props) => {
 
     const getSessionId = async () => {
         try{
-            const response = await axios.get('http://18.228.150.164:3001/session')
+            const response = await axios.get('http://54.232.52.181:3001/session')
             console.log('Session id response', response)
             return response.data.session_id;
         }catch(err){
