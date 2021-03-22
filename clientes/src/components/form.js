@@ -204,7 +204,7 @@ const APIForm  = (props) => {
                 <div>
                     <label className="text-center text-white font-weight-bold">Procedimiento</label>
                 </div>
-                <Button style={{backgroundColor:'#18938B', alignItems:"center"}} type="primary" onClick={divAutocaptureFront}>Realizar Onboarding
+                <Button style={{backgroundColor:'#18938B', alignItems:"center"}} type="primary" onClick={divLiveness}>Realizar Onboarding
                 </Button>
                 </Col>
             </Row>
@@ -265,16 +265,13 @@ const APIForm  = (props) => {
                     </Col>
                 </Col>                
             </Row>
-            {/* <div hidden={viewDiv} className="card">
+            <div hidden={viewDiv} className="card">
                 <div className="card-body">
                     <p className="card-text text-center">Capture su parte frontal
                         <div className="container-lg" style={{padding:20}} id="containerfront">
                         </div>
                     </p>
                 </div>
-            </div> */}
-            <div id="containerfront">
-
             </div>
             <div hidden={viewDiv1} className="card">
                 <div className="card-body">
