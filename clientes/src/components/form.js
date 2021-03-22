@@ -19,6 +19,7 @@ const APIForm  = (props) => {
     const [viewDiv, setViewDiv] = useState(true)
     const [viewDiv1, setViewDiv1] = useState(true)
     const [viewDiv2, setViewDiv2] = useState(true)
+    const [div, setDiv] = useState(false)
     const [match, setMatch] = useState(null)
     
     const onChange = (value) =>{
@@ -28,6 +29,7 @@ const APIForm  = (props) => {
         console.log(dtype)
     }
     const divAutocaptureBack = async (values) =>{
+        setViewDiv1(false)
         const sessionId = await getSessionId();
         console.log('Session id', sessionId)
         const autocapture = window.TOCautocapture;
@@ -49,17 +51,18 @@ const APIForm  = (props) => {
             divLiveness()
         },
            failure: function(error){ message.error('Se ha generado el error: ' + error)},
-           http: true
+           http: true, 
        }) 
     } 
 
     const divAutocaptureFront = async (values) =>{
         console.log(dtype)
+        setDiv(true)
+        setViewDiv(false)
         const sessionId = await getSessionId();
         console.log('Session id', sessionId)
         const autocapture = window.TOCautocapture;
         const TOCautocapture = autocapture;
-        //uso de la funcion
 
         TOCautocapture('containerfront', {
             locale: "es",
@@ -78,12 +81,12 @@ const APIForm  = (props) => {
         },
         failure: function(error){ message.error('Se ha generado el error: ' + error)} , 
         http: true,
-        url_wsac : "https://prod-capture.tocws.com",
-        url_lbac :  "https://prod-api.7oc.cl/auto-capture/data/v2"
     }) 
     } 
 
     const divLiveness = async (values) =>{
+
+        setViewDiv2(false)
         const sessionId = await getSessionId();
         console.log('Session id', sessionId)
         const autocapture = window.TOCliveness ;
@@ -99,7 +102,7 @@ const APIForm  = (props) => {
         setViewDiv2(true)
         },
         failure: function(error){ message.error('Se ha generado el error: ' + error)},
-        http: true
+        http: true, 
     }) 
     } 
 
@@ -110,7 +113,6 @@ const APIForm  = (props) => {
         setModalText('El modal se cerrara en dos segundos');
         setConfirmLoading(true);
         setTimeout(() => {
-            
           setVisible(false);
           setConfirmLoading(false);
         }, 2000);
@@ -124,7 +126,6 @@ const APIForm  = (props) => {
     const cols = {
         padding: 10
     };
-
 
     const getSessionId = async () => {
         try{
@@ -177,7 +178,8 @@ const APIForm  = (props) => {
             form={form}
             onFinish={onFinish}
         >
-            <Row>
+           <div hidden={div}>
+           <Row>
                 <Col lg={12} xs={24} style={{textAlign:"center", display:"inline-block"}} hidden={hidden} className="text-center">
                         <div className="text-center text-white border" style={{padding:10,  backgroundColor:'#03324B'}}>
                         <div className="card-body" style={{padding:10}}>
@@ -201,7 +203,7 @@ const APIForm  = (props) => {
                 <div>
                     <label className="text-center text-white font-weight-bold">Procedimiento</label>
                 </div>
-                <Button style={{backgroundColor:'#18938B', alignItems:"center"}} type="primary" onClick={divLiveness}>Realizar Onboarding
+                <Button style={{backgroundColor:'#18938B', alignItems:"center"}} type="primary" onClick={divAutocaptureFront}>Realizar Onboarding
                 </Button>
                 </Col>
             </Row>
@@ -262,6 +264,8 @@ const APIForm  = (props) => {
                     </Col>
                 </Col>                
             </Row>
+            </div> 
+            
             <div hidden={viewDiv} className="card">
                 <div className="card-body">
                     <p className="card-text text-center">Capture su parte frontal
