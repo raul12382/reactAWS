@@ -28,7 +28,6 @@ const APIForm  = (props) => {
         console.log(dtype)
     }
     const divAutocaptureBack = async (values) =>{
-        setViewDiv1(false)
         const sessionId = await getSessionId();
         console.log('Session id', sessionId)
         const autocapture = window.TOCautocapture;
@@ -56,7 +55,6 @@ const APIForm  = (props) => {
 
     const divAutocaptureFront = async (values) =>{
         console.log(dtype)
-        setViewDiv(false)
         const sessionId = await getSessionId();
         console.log('Session id', sessionId)
         const autocapture = window.TOCautocapture;
@@ -86,7 +84,6 @@ const APIForm  = (props) => {
     } 
 
     const divLiveness = async (values) =>{
-        setViewDiv2(false)
         const sessionId = await getSessionId();
         console.log('Session id', sessionId)
         const autocapture = window.TOCliveness ;
