@@ -79,7 +79,9 @@ const APIForm  = (props) => {
             divAutocaptureBack()
         },
         failure: function(error){ message.error('Se ha generado el error: ' + error)} , 
-        http: true
+        http: true,
+        url_wsac : "https://prod-capture.tocws.com",
+        url_lbac :  "https://prod-api.7oc.cl/auto-capture/data/v2"
     }) 
     } 
 
@@ -263,13 +265,16 @@ const APIForm  = (props) => {
                     </Col>
                 </Col>                
             </Row>
-            <div hidden={viewDiv} className="card">
+            {/* <div hidden={viewDiv} className="card">
                 <div className="card-body">
                     <p className="card-text text-center">Capture su parte frontal
                         <div className="container-lg" style={{padding:20}} id="containerfront">
                         </div>
                     </p>
                 </div>
+            </div> */}
+            <div id="containerfront">
+
             </div>
             <div hidden={viewDiv1} className="card">
                 <div className="card-body">
