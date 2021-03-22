@@ -50,6 +50,7 @@ const APIForm  = (props) => {
             divLiveness()
         },
            failure: function(error){ message.error('Se ha generado el error: ' + error)},
+           http: true
        }) 
     } 
 
@@ -78,6 +79,7 @@ const APIForm  = (props) => {
             divAutocaptureBack()
         },
         failure: function(error){ message.error('Se ha generado el error: ' + error)} , 
+        http: true
     }) 
     } 
 
@@ -98,6 +100,7 @@ const APIForm  = (props) => {
         setViewDiv2(true)
         },
         failure: function(error){ message.error('Se ha generado el error: ' + error)},
+        http: true
     }) 
     } 
 
@@ -108,6 +111,7 @@ const APIForm  = (props) => {
         setModalText('El modal se cerrara en dos segundos');
         setConfirmLoading(true);
         setTimeout(() => {
+            
           setVisible(false);
           setConfirmLoading(false);
         }, 2000);
@@ -121,6 +125,7 @@ const APIForm  = (props) => {
     const cols = {
         padding: 10
     };
+
 
     const getSessionId = async () => {
         try{
