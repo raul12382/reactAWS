@@ -51,7 +51,6 @@ const APIForm  = (props) => {
             divLiveness()
         },
            failure: function(error){ message.error('Se ha generado el error: ' + error)},
-           http: true, 
        }) 
     } 
 
@@ -80,7 +79,6 @@ const APIForm  = (props) => {
             divAutocaptureBack()
         },
         failure: function(error){ message.error('Se ha generado el error: ' + error)} , 
-        http: true,
     }) 
     } 
 
@@ -102,7 +100,6 @@ const APIForm  = (props) => {
         setViewDiv2(true)
         },
         failure: function(error){ message.error('Se ha generado el error: ' + error)},
-        http: true, 
     }) 
     } 
 
@@ -178,7 +175,6 @@ const APIForm  = (props) => {
             form={form}
             onFinish={onFinish}
         >
-           <div hidden={div}>
            <Row>
                 <Col lg={12} xs={24} style={{textAlign:"center", display:"inline-block"}} hidden={hidden} className="text-center">
                         <div className="text-center text-white border" style={{padding:10,  backgroundColor:'#03324B'}}>
@@ -242,6 +238,7 @@ const APIForm  = (props) => {
                             confirmLoading={confirmLoading}
                             onCancel={handleCancel}
                         >
+                            <h2>Resultado Biometrico: </h2><p style={{color:"green"}}> {match}</p>
                             <p>Apellidos Paternos: {information["family name"] ? information["family name"] : "Documento sin escanear"}</p>
                             <br/>
                             <p>Nombre Completo: {information.name ?  information.name : "Documento sin escanear"}</p>
@@ -255,6 +252,7 @@ const APIForm  = (props) => {
                             <p>Numero de documento: {information["document number"] ? information["document number"] : "Documento sin escanear"}</p>
                             <br/>
                             <p>Fecha Nacimiento: {information["date of birth"] ? information["date of birth"] : "Documento sin escanear"}</p>
+                            <br/>
                         </Modal>
                     </Form.Item>
                     <Col style={{paddingBottom:20, textAlign:"center"}} className="text-center">
@@ -264,7 +262,6 @@ const APIForm  = (props) => {
                     </Col>
                 </Col>                
             </Row>
-            </div> 
             
             <div hidden={viewDiv} className="card">
                 <div className="card-body">
