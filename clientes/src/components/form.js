@@ -51,12 +51,12 @@ const APIForm  = (props) => {
             divLiveness()
         },
            failure: function(error){ message.error('Se ha generado el error: ' + error)},
+           http: true
        }) 
     } 
 
     const divAutocaptureFront = async (values) =>{
         console.log(dtype)
-        setDiv(true)
         setViewDiv(false)
         const sessionId = await getSessionId();
         console.log('Session id', sessionId)
@@ -79,6 +79,7 @@ const APIForm  = (props) => {
             divAutocaptureBack()
         },
         failure: function(error){ message.error('Se ha generado el error: ' + error)} , 
+        http: true
     }) 
     } 
 
@@ -100,6 +101,7 @@ const APIForm  = (props) => {
         setViewDiv2(true)
         },
         failure: function(error){ message.error('Se ha generado el error: ' + error)},
+        http: true
     }) 
     } 
 
